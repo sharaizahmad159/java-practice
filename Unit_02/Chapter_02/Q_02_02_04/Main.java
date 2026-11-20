@@ -31,27 +31,17 @@ public class Main {
             return;
         }
 
-        // Step 3: Withdraw amount
+        // Step 3: Enter withdrawal amount
         int amount = scanner.nextInt();
-
-        // Check account balance first as specified
         if (amount > balance) {
             System.out.println("Insufficient funds. Goodbye.");
-            scanner.close();
-            return;
-        }
-
-        // Then check daily limit
-        if (amount > dailyLimit) {
+        } else if (amount > dailyLimit) {
             System.out.println("Exceeds daily limit. Goodbye.");
-            scanner.close();
-            return;
+        } else {
+            balance -= amount;
+            System.out.println("Withdrawal approved.");
+            System.out.println("Balance: $" + balance);
         }
-
-        // Approved withdrawal
-        balance = balance - amount;
-        System.out.println("Withdrawal approved.");
-        System.out.println("Balance: $" + balance);
 
         scanner.close();
     }
